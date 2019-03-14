@@ -8,12 +8,18 @@
 
 import UIKit
 import XLPagerTabStrip
-class FavouritesVC: UIViewController, IndicatorInfoProvider {
+class FavouritesVC: UIViewController, IndicatorInfoProvider, UIPopoverPresentationControllerDelegate {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Favourites")
     }
     
-
+    @IBAction func popOverAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "pop", sender: self)
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,14 +27,6 @@ class FavouritesVC: UIViewController, IndicatorInfoProvider {
     }
     
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
